@@ -8,17 +8,15 @@
 const DRINKA = {
   nombre: "DRINKA by Kai Bobba",
 
-  // Número de WhatsApp con código de país, sin "+" ni espacios (ej. Ecuador: 5939XXXXXXXX)
+  // ⚠️ Número de WhatsApp con código de país, sin "+" ni espacios (ej. Ecuador: 5939XXXXXXXX)
   whatsapp: "593900000000",
   mensajeWhatsapp: "¡Hola Drinka! Quiero hacer un pedido 🧋",
 
   // Enlaces (si dejas uno vacío "", ese botón se oculta)
-  instagram: "https://www.instagram.com/TU_USUARIO/",
-  tiktok: "https://www.tiktok.com/@TU_USUARIO",
-  facebook: "https://www.facebook.com/TU_PAGINA",
-  menu: "https://www.instagram.com/TU_USUARIO/",      // carta en PDF, Canva o Instagram
+  instagram: "https://www.instagram.com/drinka.ec/",
+  tiktok: "https://www.tiktok.com/@drinka.ec",
   delivery: "",                                        // vacío = pide a domicilio por WhatsApp
-  promos: "https://www.instagram.com/TU_USUARIO/",
+  promos: "https://www.instagram.com/drinka.ec/",
   mapa: "https://maps.google.com/?q=DRINKA+by+Kai+Bobba",
   direccion: "Escribe aquí la dirección del local",
 
@@ -34,23 +32,48 @@ const DRINKA = {
     domingo:   ["12:00", "20:00"],
   },
 
-  // "Arma tu Drinka": cada sabor usa su color de la paleta de sabor
-  sabores: [
-    { id: "taro",         nombre: "Taro",         linea: "Línea Taro · taro y uva",           color: "#9E86D6" },
-    { id: "matcha",       nombre: "Matcha",       linea: "Línea Matcha · tés verdes",         color: "#6F8A3A" },
-    { id: "mango",        nombre: "Mango",        linea: "Línea Mango · frozen",              color: "#F4C24F" },
-    { id: "maracuya",     nombre: "Maracuyá",     linea: "Línea Maracuyá · cítricos",         color: "#EE8A34" },
-    { id: "frutos-rojos", nombre: "Frutos rojos", linea: "Línea Vino · frutos rojos",         color: "#7B2433" },
+  // Menú. color = color de la línea; textoBanda = color del título sobre esa franja
+  // capas = colores del vaso de arriba hacia abajo. favorito = la bebida destacada
+  menu: [
+    {
+      id: "matcha", nombre: "Matcha", color: "#6F8A3A", textoBanda: "#FFFFFF",
+      bebidas: [
+        { nombre: "Matcha Latte",      precio: 3.00, favorito: true, capas: ["#7FA650", "#EEE5D0"] },
+        { nombre: "Matcha Strawberry", precio: 3.50, capas: ["#7FA650", "#EEE5D0", "#D93A4A"] },
+        { nombre: "Matcha & Café",     precio: 3.50, capas: ["#7FA650", "#EEE5D0", "#4A2A1C"] },
+        { nombre: "Matcha Oreo",       precio: 3.50, capas: ["#7FA650", "#EEE5D0", "#2B2422"] },
+        { nombre: "Matcha & Taro",     precio: 4.50, capas: ["#7FA650", "#EEE5D0", "#9E86D6"] },
+      ],
+    },
+    {
+      id: "taro", nombre: "Taro", color: "#9E86D6", textoBanda: "#2B1D4D",
+      bebidas: [
+        { nombre: "Taro Latte",       precio: 3.00, favorito: true, capas: ["#9E86D6", "#DCD3F2"] },
+        { nombre: "Taro & Matcha",    precio: 4.50, capas: ["#7FA650", "#DCD3F2", "#9E86D6"] },
+        { nombre: "Taro & Café",      precio: 3.50, capas: ["#4A2A1C", "#DCD3F2", "#9E86D6"] },
+        { nombre: "Taro & Chocolate", precio: 3.50, capas: ["#9E86D6", "#DCD3F2", "#5B3A2B"] },
+      ],
+    },
+    {
+      id: "tes", nombre: "Tés", color: "#EE8A34", textoBanda: "#1F2A4D",
+      bebidas: [
+        { nombre: "Drinka Tea",      precio: 2.00, favorito: true, limon: true, capas: ["#E7A04B", "#D2692A"] },
+        { nombre: "Té Negro",        precio: 2.00, capas: ["#3B2417"] },
+        { nombre: "Té de Jengibre",  precio: 2.00, capas: ["#C47A2C"] },
+        { nombre: "Flor de Jamaica", precio: 2.00, capas: ["#B21F37"] },
+      ],
+    },
+    {
+      id: "cafe", nombre: "Café", color: "#1F2A4D", textoBanda: "#FBEBDD",
+      bebidas: [
+        { nombre: "Ice Latte",      precio: 2.50, favorito: true, capas: ["#3B2417", "#EEE5D0"] },
+        { nombre: "Caramel Latte",  precio: 3.50, capas: ["#C98A4B", "#EEE5D0"] },
+        { nombre: "Mocca",          precio: 3.50, capas: ["#5A3424", "#A26B4B"] },
+        { nombre: "Capuchino",      precio: 3.50, capas: ["#EEE5D0", "#4A2A1C"] },
+        { nombre: "Café Americano", precio: 2.00, capas: ["#2A1912"] },
+      ],
+    },
   ],
-  tamanos: ["Mediano", "Grande"],
-  tamanoInicial: 1,
-  // forma: "perla" (tapioca), "pop" (popping boba) o "jelly"
-  toppings: [
-    { id: "tapioca", nombre: "Tapioca",      forma: "perla" },
-    { id: "popping", nombre: "Popping boba", forma: "pop" },
-    { id: "jelly",   nombre: "Jelly",        forma: "jelly" },
-  ],
-  toppingsIniciales: ["tapioca"],
 };
 /* ========================================================= */
 
@@ -58,6 +81,8 @@ const DRINKA = {
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const html = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const money = n => `$${n.toFixed(2)}`;
 
 const waLink = text =>
   `https://wa.me/${DRINKA.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -67,8 +92,6 @@ const LINKS = {
   whatsapp: waLink(DRINKA.mensajeWhatsapp),
   instagram: DRINKA.instagram,
   tiktok: DRINKA.tiktok,
-  facebook: DRINKA.facebook,
-  menu: DRINKA.menu,
   delivery: DRINKA.delivery || waLink("¡Hola Drinka! Quiero pedir a domicilio 🛵"),
   promos: DRINKA.promos,
   mapa: DRINKA.mapa,
@@ -150,16 +173,14 @@ function estado() {
 
 function pintarHorario() {
   const e = estado();
-  const status = $("#status");
-  status.classList.toggle("is-open", e.abierto);
+  $("#status").classList.toggle("is-open", e.abierto);
   $("#status-text").textContent = e.texto;
 
   const pill = $("#h-pill");
   pill.textContent = e.corto;
   pill.classList.toggle("is-open", e.abierto);
 
-  const list = $("#hours");
-  list.replaceChildren(...ORDEN.map(d => {
+  $("#hours").replaceChildren(...ORDEN.map(d => {
     const h = DRINKA.horario[KEYS[d]];
     const li = document.createElement("li");
     li.classList.toggle("is-today", d === e.dia);
@@ -183,109 +204,188 @@ pintarHorario();
 setInterval(pintarHorario, 60_000);
 
 /* =========================================================
-   ARMA TU DRINKA
+   MENÚ + PEDIDO
    ========================================================= */
-const builder = $("#builder");
-const cupWrap = $("#cup-wrap");
-const pedido = {
-  sabor: DRINKA.sabores[0].id,
-  tamano: DRINKA.tamanoInicial ?? 0,
-  toppings: new Set(DRINKA.toppingsIniciales || []),
+const catalog = new Map();   // id → bebida
+const cart = new Map();      // id → cantidad
+const slug = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+DRINKA.menu.forEach(cat => cat.bebidas.forEach(b => {
+  b.id = slug(`${cat.id}-${b.nombre}`);
+  catalog.set(b.id, b);
+}));
+
+// Vaso ilustrado como en el menú impreso
+let cupCount = 0;
+function cupSVG(bebida, grande = false) {
+  const id = `cup${++cupCount}`;
+  const body = "M16,28 L23,122 Q23.4,126 27,126 H73 Q76.6,126 77,122 L84,28 Z";
+  const top = 33, bottom = 126;
+  const h = (bottom - top) / bebida.capas.length;
+  const stroke = grande ? 2.6 : 6;
+  const layers = bebida.capas
+    .map((c, i) => `<rect x="0" y="${(top + i * h).toFixed(1)}" width="100" height="${(h + .8).toFixed(1)}" fill="${c}"/>`)
+    .join("");
+  const ice = grande
+    ? `<g class="ice" fill="rgba(200,229,245,.85)" stroke="rgba(255,255,255,.95)" stroke-width="1.6">
+         <rect x="46" y="36" width="19" height="19" rx="5"/>
+         <rect x="59" y="45" width="17" height="17" rx="5"/>
+         <rect x="41" y="52" width="16" height="16" rx="5"/>
+       </g>`
+    : "";
+  const lemon = grande && bebida.limon
+    ? `<g><circle cx="36" cy="48" r="13" fill="#F6D24A" stroke="#F2B937" stroke-width="2.5"/>
+         <path d="M36,37 V59 M25,48 H47 M28.2,40.2 L43.8,55.8 M43.8,40.2 L28.2,55.8" stroke="#fff" stroke-width="1.6"/></g>`
+    : "";
+  const perla = grande ? `<circle cx="58" cy="76" r="45" fill="url(#g-perla)"/>` : "";
+  const straw = grande
+    ? `<line x1="32" y1="6" x2="35" y2="118" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>`
+    : `<line x1="33" y1="36" x2="35" y2="116" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/>`;
+  return `<svg viewBox="0 0 100 132" aria-hidden="true">
+    <defs><clipPath id="${id}"><path d="${body}"/></clipPath></defs>
+    ${perla}
+    <path d="${body}" fill="rgba(255,255,255,.75)"/>
+    <g clip-path="url(#${id})">${layers}${ice}${lemon}</g>
+    ${straw}
+    <path d="${body}" fill="none" stroke="#CFCBE0" stroke-width="${stroke}" stroke-linejoin="round"/>
+    <path d="M13,25 Q50,4 87,25" fill="none" stroke="#CFCBE0" stroke-width="${stroke}" stroke-linecap="round"/>
+    <line x1="10" y1="27" x2="90" y2="27" stroke="#CFCBE0" stroke-width="${stroke}" stroke-linecap="round"/>
+  </svg>`;
+}
+
+const qtyHTML = b => {
+  const n = cart.get(b.id) || 0;
+  return `<div class="qty" data-id="${b.id}" data-n="${n}">
+    <button type="button" class="qty__btn qty__minus" data-step="-1" aria-label="Quitar un ${html(b.nombre)}">−</button>
+    <span class="qty__n">${n}</span>
+    <button type="button" class="qty__btn qty__plus" data-step="1" aria-label="Agregar ${html(b.nombre)}">+</button>
+  </div>`;
 };
 
-function chip(type, name, value, label, checked) {
-  const el = document.createElement("label");
-  el.className = "chip";
-  const input = document.createElement("input");
-  input.type = type;
-  input.name = name;
-  input.value = value;
-  input.checked = checked;
-  el.append(input);
-  el.classList.toggle("is-on", checked);
-  return { el, input, label };
+const tabs = $("#m-tabs");
+const panel = $("#m-panel");
+let catActual = 0;
+
+function pintarPanel() {
+  const cat = DRINKA.menu[catActual];
+  const fav = cat.bebidas.find(b => b.favorito) || cat.bebidas[0];
+  const resto = cat.bebidas.filter(b => b !== fav);
+
+  panel.style.setProperty("--c", cat.color);
+  panel.style.setProperty("--on", cat.textoBanda);
+  panel.setAttribute("aria-labelledby", `tab-${cat.id}`);
+  panel.innerHTML = `
+    <div class="band">${html(cat.nombre)}</div>
+    <div class="feat">
+      <div>
+        <p class="feat__name">${html(fav.nombre)}</p>
+        <p class="feat__price">${money(fav.precio)}</p>
+        <p class="feat__fav">El favorito de la casa</p>
+        ${qtyHTML(fav)}
+      </div>
+      <div class="feat__cup">${cupSVG(fav, true)}</div>
+    </div>
+    <ul class="items">
+      ${resto.map(b => `<li class="item">
+        <span class="item__cup">${cupSVG(b)}</span>
+        <span class="item__name">${html(b.nombre)}</span>
+        <span class="item__price">${money(b.precio)}</span>
+        ${qtyHTML(b)}
+      </li>`).join("")}
+    </ul>`;
 }
 
-// Sabores
-const saborWrap = $("#b-sabor");
-DRINKA.sabores.forEach(s => {
-  const { el, input } = chip("radio", "sabor", s.id, s.nombre, s.id === pedido.sabor);
-  el.style.setProperty("--c", s.color);
-  const dot = document.createElement("span");
-  dot.className = "chip__dot";
-  el.append(dot, s.nombre);
-  input.addEventListener("change", () => { pedido.sabor = s.id; actualizar(true); });
-  saborWrap.append(el);
+DRINKA.menu.forEach((cat, i) => {
+  const tab = document.createElement("button");
+  tab.type = "button";
+  tab.className = "tab";
+  tab.id = `tab-${cat.id}`;
+  tab.setAttribute("role", "tab");
+  tab.setAttribute("aria-controls", "m-panel");
+  tab.style.setProperty("--c", cat.color);
+  tab.textContent = cat.nombre;
+  tab.addEventListener("click", () => elegir(i));
+  tabs.append(tab);
 });
 
-// Tamaños
-const seg = $("#b-tam");
-seg.style.setProperty("--n", DRINKA.tamanos.length);
-DRINKA.tamanos.forEach((t, i) => {
-  const label = document.createElement("label");
-  const input = document.createElement("input");
-  input.type = "radio";
-  input.name = "tamano";
-  input.value = i;
-  input.checked = i === pedido.tamano;
-  label.append(input, t);
-  input.addEventListener("change", () => { pedido.tamano = i; actualizar(true); });
-  seg.append(label);
-});
-
-// Toppings
-const topWrap = $("#b-top");
-DRINKA.toppings.forEach(t => {
-  const { el, input } = chip("checkbox", "toppings", t.id, t.nombre, pedido.toppings.has(t.id));
-  const mark = document.createElement("span");
-  mark.className = "chip__mark";
-  mark.setAttribute("aria-hidden", "true");
-  el.append(mark, t.nombre);
-  input.addEventListener("change", () => {
-    input.checked ? pedido.toppings.add(t.id) : pedido.toppings.delete(t.id);
-    actualizar(false);
+function elegir(i, foco = false) {
+  catActual = (i + DRINKA.menu.length) % DRINKA.menu.length;
+  $$(".tab", tabs).forEach((t, k) => {
+    const on = k === catActual;
+    t.setAttribute("aria-selected", on);
+    t.tabIndex = on ? 0 : -1;
+    if (on && foco) t.focus();
+    if (on) t.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
   });
-  topWrap.append(el);
+  pintarPanel();
+}
+tabs.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") { e.preventDefault(); elegir(catActual + 1, true); }
+  if (e.key === "ArrowLeft") { e.preventDefault(); elegir(catActual - 1, true); }
 });
 
-function actualizar(shake) {
-  const sabor = DRINKA.sabores.find(s => s.id === pedido.sabor);
-  const tamano = DRINKA.tamanos[pedido.tamano];
-  const tops = DRINKA.toppings.filter(t => pedido.toppings.has(t.id));
+// Pedido
+const cartEl = $("#cart");
 
-  builder.style.setProperty("--flavor", sabor.color);
-  builder.dataset.size = pedido.tamano === DRINKA.tamanos.length - 1 ? "1" : "0";
-  seg.style.setProperty("--k", pedido.tamano);
+function pintarCantidad(id) {
+  const n = cart.get(id) || 0;
+  $$(`.qty[data-id="${id}"]`).forEach(q => {
+    q.dataset.n = n;
+    $(".qty__n", q).textContent = n;
+    q.classList.remove("is-bump");
+    void q.offsetWidth;
+    q.classList.add("is-bump");
+  });
+}
 
-  // estados visuales de chips
-  $$(".chip, .seg label", builder).forEach(l => l.classList.toggle("is-on", $("input", l).checked));
-
-  // toppings dentro del vaso
-  const formas = new Set(tops.map(t => t.forma));
-  $$(".cup__top", builder).forEach(g => g.classList.toggle("is-on", formas.has(g.dataset.forma)));
-
-  // resumen
-  $("#b-line").textContent = sabor.linea;
-  $("#b-name").textContent = sabor.nombre;
-  $("#b-desc").textContent = `${tamano} · ${tops.length ? tops.map(t => t.nombre).join(", ") : "sin toppings"}`;
-
-  // mensaje de WhatsApp
-  const msg = [
+function pintarPedido(bump) {
+  let count = 0, total = 0;
+  const lines = [];
+  for (const [id, n] of cart) {
+    const b = catalog.get(id);
+    count += n;
+    total += n * b.precio;
+    lines.push(`• ${n} × ${b.nombre} (${money(n * b.precio)})`);
+  }
+  const on = count > 0;
+  cartEl.classList.toggle("is-on", on);
+  cartEl.inert = !on;
+  document.body.classList.toggle("has-cart", on);
+  $("#cart-count").textContent = `${count} ${count === 1 ? "bebida" : "bebidas"}`;
+  $("#cart-total").textContent = money(total);
+  $("#cart-go").href = waLink([
     "¡Hola Drinka! 🧋 Quiero pedir:",
-    `• 1 ${sabor.nombre} (${tamano})`,
-    `• Toppings: ${tops.length ? tops.map(t => t.nombre).join(", ") : "sin toppings"}`,
-    "¿Me confirman el total? ¡Gracias!",
-  ].join("\n");
-  $("#b-cta").href = waLink(msg);
-
-  if (shake && !reduceMotion) {
-    cupWrap.classList.remove("is-shake");
-    void cupWrap.offsetWidth;
-    cupWrap.classList.add("is-shake");
+    ...lines,
+    `Total: ${money(total)}`,
+    "¿Me confirman? ¡Gracias!",
+  ].join("\n"));
+  if (bump && on && !reduceMotion) {
+    cartEl.classList.remove("is-bump");
+    void cartEl.offsetWidth;
+    cartEl.classList.add("is-bump");
   }
 }
-cupWrap.addEventListener("animationend", () => cupWrap.classList.remove("is-shake"));
-actualizar(false);
+
+panel.addEventListener("click", e => {
+  const btn = e.target.closest("[data-step]");
+  if (!btn) return;
+  const id = btn.closest(".qty").dataset.id;
+  const n = Math.max(0, Math.min(20, (cart.get(id) || 0) + Number(btn.dataset.step)));
+  n ? cart.set(id, n) : cart.delete(id);
+  pintarCantidad(id);
+  pintarPedido(true);
+});
+
+$("#cart-clear").addEventListener("click", () => {
+  const ids = [...cart.keys()];
+  cart.clear();
+  ids.forEach(pintarCantidad);
+  pintarPedido(false);
+  toast("Pedido vaciado");
+});
+
+elegir(0);
+pintarPedido(false);
 
 /* =========================================================
    HUB: resalta la línea al pasar por una red
@@ -304,7 +404,7 @@ $$(".hub__tile").forEach(tile => {
 /* =========================================================
    ONDA AL TOCAR
    ========================================================= */
-$$(".btn, .btn-cta").forEach(btn => {
+$$(".btn").forEach(btn => {
   btn.addEventListener("pointerdown", e => {
     const r = btn.getBoundingClientRect();
     const size = Math.max(r.width, r.height) * 2.2;
@@ -345,7 +445,7 @@ $("#save-contact").addEventListener("click", () => {
     DRINKA.direccion ? `ADR;TYPE=WORK:;;${esc(DRINKA.direccion)};;;;` : "",
     url.startsWith("http") ? `URL:${url}` : "",
     DRINKA.instagram ? `X-SOCIALPROFILE;TYPE=instagram:${DRINKA.instagram}` : "",
-    "NOTE:Bubble tea · Pide por WhatsApp",
+    "NOTE:Matcha · Taro · Tés · Café",
     "END:VCARD",
   ].filter(Boolean).join("\r\n");
 
@@ -361,7 +461,7 @@ $("#save-contact").addEventListener("click", () => {
 
 $("#share").addEventListener("click", async () => {
   const url = location.href.split("#")[0];
-  const data = { title: DRINKA.nombre, text: "Mira DRINKA by Kai Bobba 🧋", url };
+  const data = { title: DRINKA.nombre, text: "Mira el menú de DRINKA by Kai Bobba 🧋", url };
   try {
     if (navigator.share) { await navigator.share(data); return; }
     await navigator.clipboard.writeText(url);

@@ -9,7 +9,7 @@ Tarjeta interactiva (link en bio) de **DRINKA by Kai Bobba**.
 - Bienvenida animada: el logo se arma solo y hay burbujas de boba que reaccionan al toque.
 - Redes conectadas a la perla con pulsos de luz.
 - Botón de pedido por WhatsApp, menú, delivery, ubicación y promos.
-- **Arma tu Drinka**: eliges sabor, tamaño y toppings, y se abre WhatsApp con el pedido ya escrito.
+- **Menú con precios** (Matcha, Taro, Tés, Café): tocas **+** en cada bebida, se calcula el total y el pedido se envía por WhatsApp ya escrito.
 - Horario en vivo (abierto / cerrado / cierra pronto).
 - Guardar contacto y compartir.
 
@@ -18,10 +18,10 @@ Tarjeta interactiva (link en bio) de **DRINKA by Kai Bobba**.
 Todo está al inicio de `script.js`, en el bloque **EDITA AQUÍ**:
 
 - `whatsapp`: número con código de país, sin `+` ni espacios.
-- `instagram`, `tiktok`, `facebook`, `menu`, `promos`, `mapa`: enlaces. Si dejas uno vacío (`""`), su botón se oculta.
+- `instagram`, `tiktok`, `delivery`, `promos`, `mapa`: enlaces. Si dejas uno vacío (`""`), su botón se oculta.
 - `direccion`: texto que aparece en "Cómo llegar".
 - `horario`: horas de apertura y cierre por día (`null` = cerrado).
-- `sabores` y `toppings`: opciones de "Arma tu Drinka".
+- `menu`: categorías, bebidas y precios. `favorito: true` marca la bebida destacada de cada categoría.
 
 Después de editar, haz commit y push: la página se actualiza sola en 1 o 2 minutos.
 

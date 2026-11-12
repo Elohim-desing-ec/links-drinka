@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DRINKA by Kai Bobba</title>
-<meta name="description" content="DRINKA by Kai Bobba · Bubble tea. Pide por WhatsApp, mira el menú, horarios y cómo llegar.">
+<meta name="description" content="DRINKA by Kai Bobba · Matcha, taro, tés y café. Mira el menú con precios, pide por WhatsApp y encuentra nuestro horario.">
 <meta name="theme-color" content="#1F2A4D">
 <meta property="og:type" content="website">
 <meta property="og:title" content="DRINKA by Kai Bobba">
-<meta property="og:description" content="Bubble tea · Pide por WhatsApp, menú, horarios y ubicación.">
+<meta property="og:description" content="Un día tranquilo empieza con… Menú, pedidos por WhatsApp, horario y ubicación.">
 <meta property="og:url" content="https://elohim-desing-ec.github.io/links-drinka/">
 <meta property="og:image" content="https://elohim-desing-ec.github.io/links-drinka/assets/og.png">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add("js")</script>
 <noscript><style>.welcome{display:none}</style></noscript>
@@ -79,9 +79,9 @@
     </svg>
 
     <img class="welcome__wordmark" src="assets/wordmark-blanco.png" alt="DRINKA by Kai Bobba" width="900" height="240">
-    <p class="welcome__eyebrow">Bubble tea</p>
+    <p class="welcome__eyebrow">Matcha · Taro · Tés · Café</p>
     <h2 class="welcome__title" id="w-title">¡Hola! Qué bueno verte</h2>
-    <p class="welcome__text">Aquí encuentras el menú, el horario y la forma más rápida de pedir.</p>
+    <p class="welcome__text">Aquí encuentras el menú con precios, el horario y la forma más rápida de pedir.</p>
     <button class="welcome__btn" id="enter" type="button">Entrar <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
   </div>
 </div>
@@ -94,7 +94,7 @@
     <div class="hero__beam" aria-hidden="true"></div>
 
     <h1 class="hero__logo reveal" style="--i:0"><img src="assets/logo-blanco.png" alt="DRINKA by Kai Bobba" width="1100" height="442"></h1>
-    <p class="hero__tagline reveal" style="--i:1">Bubble tea para cualquier momento del día.</p>
+    <p class="hero__tagline reveal" style="--i:1">Un día tranquilo empieza con…</p>
     <p class="status reveal" id="status" style="--i:2"><span class="status__dot" aria-hidden="true"></span><span id="status-text">Revisando horario…</span></p>
 
     <!-- Redes conectadas a la perla, con pulsos de luz -->
@@ -113,7 +113,7 @@
         </defs>
         <g class="hub__base">
           <path data-line="instagram" d="M60,40 H92 L116,64 H138"/>
-          <path data-line="facebook" d="M60,120 H92 L116,96 H138"/>
+          <path data-line="mapa" d="M60,120 H92 L116,96 H138"/>
           <path data-line="tiktok" d="M280,40 H248 L224,64 H202"/>
           <path data-line="whatsapp" d="M280,120 H248 L224,96 H202"/>
           <path d="M0,80 H138"/>
@@ -143,12 +143,12 @@
       </svg>
 
       <a class="hub__tile reveal-pop" style="--x:36;--y:40;--i:3" data-link="instagram" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true"><use href="#i-ig"/></svg></a>
-      <a class="hub__tile reveal-pop" style="--x:36;--y:120;--i:4" data-link="facebook" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true"><use href="#i-fb"/></svg></a>
+      <a class="hub__tile reveal-pop" style="--x:36;--y:120;--i:4" data-link="mapa" target="_blank" rel="noopener" aria-label="Ubicación en el mapa"><svg aria-hidden="true"><use href="#i-pin"/></svg></a>
       <a class="hub__tile reveal-pop" style="--x:304;--y:40;--i:5" data-link="tiktok" target="_blank" rel="noopener" aria-label="TikTok"><svg aria-hidden="true"><use href="#i-tt"/></svg></a>
       <a class="hub__tile reveal-pop" style="--x:304;--y:120;--i:6" data-link="whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
       <div class="hub__chip reveal-pop" style="--x:170;--y:80;--i:2" aria-hidden="true"><span class="hub__perla"></span></div>
     </nav>
-    <p class="hub__caption reveal" style="--i:5">Síguenos y escríbenos</p>
+    <p class="hub__caption reveal" style="--i:5">Síguenos · @drinka.ec</p>
   </header>
 
   <!-- ============ ENLACES ============ -->
@@ -158,9 +158,9 @@
       <span class="btn__label">Haz tu pedido<small>Escríbenos por WhatsApp</small></span>
       <svg class="btn__arrow" aria-hidden="true"><use href="#i-chev"/></svg>
     </a>
-    <a class="btn reveal" style="--i:5" data-link="menu" target="_blank" rel="noopener">
+    <a class="btn reveal" style="--i:5" href="#menu">
       <span class="btn__icon"><svg aria-hidden="true"><use href="#i-cup"/></svg></span>
-      <span class="btn__label">Ver el menú<small>Todas nuestras bebidas y toppings</small></span>
+      <span class="btn__label">Ver el menú<small>Matcha, taro, tés y café con precios</small></span>
       <svg class="btn__arrow" aria-hidden="true"><use href="#i-chev"/></svg>
     </a>
     <a class="btn reveal" style="--i:6" data-link="delivery" target="_blank" rel="noopener">
@@ -180,74 +180,13 @@
     </a>
   </nav>
 
-  <!-- ============ ARMA TU DRINKA ============ -->
-  <section class="card builder reveal" id="builder" aria-labelledby="b-title">
-    <p class="eyebrow">Interactivo</p>
-    <h2 id="b-title">Arma tu Drinka</h2>
-
-    <div class="builder__top">
-      <div class="builder__cup" id="cup-wrap">
-        <svg class="cup" id="cup" viewBox="0 0 140 180" aria-hidden="true">
-          <defs>
-            <clipPath id="cup-clip"><path d="M35,52 L42.5,155 Q43.5,166 54,166 H86 Q96.5,166 97.5,155 L105,52 Z"/></clipPath>
-          </defs>
-          <circle cx="70" cy="104" r="60" fill="url(#g-perla)"/>
-          <path d="M35,52 L42.5,155 Q43.5,166 54,166 H86 Q96.5,166 97.5,155 L105,52 Z" fill="rgba(255,255,255,.78)"/>
-          <line x1="100" y1="6" x2="66" y2="150" stroke="#1F2A4D" stroke-width="8" stroke-linecap="round"/>
-          <g clip-path="url(#cup-clip)">
-            <path class="cup__liquid cup__wave cup__wave--back" d="M0,76 q17.5,-8 35,0 t35,0 t35,0 t35,0 t35,0 t35,0 t35,0 t35,0 V180 H0 Z"/>
-            <path class="cup__liquid cup__wave" d="M0,82 q17.5,-8 35,0 t35,0 t35,0 t35,0 t35,0 t35,0 t35,0 t35,0 V180 H0 Z"/>
-            <g class="cup__top" data-forma="jelly" fill="rgba(255,255,255,.5)" stroke="rgba(255,255,255,.85)" stroke-width="1">
-              <rect style="--d:0" x="48" y="94" width="8" height="8" rx="2" transform="rotate(14 52 98)"/>
-              <rect style="--d:1" x="62" y="100" width="8" height="8" rx="2" transform="rotate(-10 66 104)"/>
-              <rect style="--d:2" x="78" y="92" width="8" height="8" rx="2" transform="rotate(22 82 96)"/>
-              <rect style="--d:3" x="88" y="103" width="7" height="7" rx="2" transform="rotate(-18 91 106)"/>
-            </g>
-            <g class="cup__top" data-forma="pop" fill="rgba(255,255,255,.55)" stroke="rgba(255,255,255,.95)" stroke-width="1">
-              <circle style="--d:0" cx="53" cy="122" r="4.6"/>
-              <circle style="--d:1" cx="67" cy="116" r="4.6"/>
-              <circle style="--d:2" cx="81" cy="124" r="4.6"/>
-              <circle style="--d:3" cx="91" cy="114" r="4.2"/>
-              <circle style="--d:4" cx="74" cy="130" r="4.2"/>
-            </g>
-            <g class="cup__top" data-forma="perla" fill="#1F2A4D">
-              <circle style="--d:0" cx="52" cy="158" r="5.6"/>
-              <circle style="--d:1" cx="64" cy="160" r="5.6"/>
-              <circle style="--d:2" cx="76" cy="159" r="5.6"/>
-              <circle style="--d:3" cx="88" cy="157" r="5.6"/>
-              <circle style="--d:4" cx="57" cy="148" r="5.4"/>
-              <circle style="--d:5" cx="70" cy="149" r="5.6"/>
-              <circle style="--d:6" cx="83" cy="147" r="5.4"/>
-              <circle style="--d:7" cx="63" cy="138" r="5"/>
-              <circle style="--d:8" cx="77" cy="137" r="5"/>
-            </g>
-          </g>
-          <path d="M44,64 L49,140" stroke="rgba(255,255,255,.6)" stroke-width="4" stroke-linecap="round"/>
-          <path d="M35,52 L42.5,155 Q43.5,166 54,166 H86 Q96.5,166 97.5,155 L105,52" fill="none" stroke="#1F2A4D" stroke-width="3.5" stroke-linejoin="round"/>
-          <rect x="28" y="44" width="84" height="10" rx="5" fill="#1F2A4D"/>
-        </svg>
-      </div>
-      <div class="builder__summary" aria-live="polite">
-        <p class="builder__line" id="b-line">Línea</p>
-        <p class="builder__name" id="b-name">Sabor</p>
-        <p class="builder__desc" id="b-desc">Tamaño · Toppings</p>
-      </div>
-    </div>
-
-    <fieldset class="opt">
-      <legend>Sabor</legend>
-      <div class="chips" id="b-sabor"></div>
-    </fieldset>
-    <fieldset class="opt">
-      <legend>Tamaño</legend>
-      <div class="seg" id="b-tam"><span class="seg__thumb" aria-hidden="true"></span></div>
-    </fieldset>
-    <fieldset class="opt">
-      <legend>Toppings</legend>
-      <div class="chips" id="b-top"></div>
-    </fieldset>
-
-    <a class="btn-cta" id="b-cta" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir este por WhatsApp</a>
+  <!-- ============ MENÚ + PEDIDO ============ -->
+  <section class="card menu reveal" id="menu" aria-labelledby="m-title">
+    <p class="eyebrow">Un día tranquilo empieza con…</p>
+    <h2 id="m-title">Nuestro menú</h2>
+    <div class="tabs" id="m-tabs" role="tablist" aria-label="Categorías del menú"></div>
+    <div class="menu__panel" id="m-panel" role="tabpanel"></div>
+    <p class="menu__hint">Toca <b>+</b> para armar tu pedido y envíalo por WhatsApp.</p>
   </section>
 
   <!-- ============ HORARIO ============ -->
@@ -270,6 +209,16 @@
     <p>© <span id="year">2026</span> DRINKA by Kai Bobba</p>
   </footer>
 </main>
+
+<!-- Barra del pedido -->
+<div class="cart" id="cart" aria-label="Tu pedido">
+  <button class="cart__clear" id="cart-clear" type="button" aria-label="Vaciar pedido">×</button>
+  <div class="cart__info">
+    <span class="cart__count" id="cart-count">0 bebidas</span>
+    <span class="cart__total" id="cart-total">$0.00</span>
+  </div>
+  <a class="cart__go" id="cart-go" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Pedir</a>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
