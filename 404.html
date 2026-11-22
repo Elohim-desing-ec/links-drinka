@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Página no encontrada · DRINKA</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F2A4D">
+<!--
+  GitHub Pages muestra este archivo en cualquier dirección que no exista, también
+  en rutas como /links-drinka/a/b/c. Por eso las rutas empiezan con /links-drinka/
+  y el CSS va aquí mismo. Con dominio propio, cambia /links-drinka/ por /
+-->
+<link rel="icon" type="image/svg+xml" href="/links-drinka/assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1F2A4D;
+  --cream: #FBEBDD;
+  --taro: #9E86D6;
+  --celeste: #B2DAED;
+  --perla: linear-gradient(90deg, #D1E7CF, #B2DAED 50%, #98B3E0);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+  background: radial-gradient(120% 75% at 50% 0%, #2B3A6B, var(--navy) 60%) var(--navy);
+  color: #fff;
+  font: 400 16px/1.5 "Figtree", system-ui, sans-serif;
+  text-align: center;
+}
+main { width: 100%; max-width: 420px; padding: 24px 16px calc(24px + env(safe-area-inset-bottom)); }
+h1, p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+svg, img { display: block; }
+:focus-visible { outline: 2px solid var(--celeste); outline-offset: 4px; }
+
+.logo { display: inline-block; }
+.logo img { width: 156px; height: auto; }
+
+.code {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font: 400 clamp(88px, 28vw, 120px)/1 "Anton", sans-serif;
+  color: var(--cream);
+}
+.code i {
+  width: .72em;
+  height: .72em;
+  border-radius: 50%;
+  background: var(--perla);
+  animation: float 3.4s ease-in-out infinite;
+}
+@keyframes float { 50% { transform: translateY(-9px); } }
+
+.spill {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.spill svg { width: 100%; height: auto; overflow: visible; }
+.hint { display: block; font-size: 12px; color: rgba(255, 255, 255, .65); }
+
+.cup { transform: translateX(102px) rotate(0deg); transform-origin: 100px 150px; transition: transform .7s var(--spring); }
+.liquid { transform-origin: 70px 150px; transition: transform .7s ease; }
+.puddle { transform: scale(0); transform-origin: 194px 151px; transition: transform .6s ease; }
+.pearl {
+  opacity: 0;
+  transform: translateX(var(--from));
+  transition: transform .8s cubic-bezier(.2, .8, .2, 1), opacity .25s;
+}
+.is-spilled .cup { transform: translateX(0) rotate(90deg); }
+.is-spilled .liquid { transform: scaleY(.3); }
+.is-spilled .puddle { transform: scale(1); transition-delay: .3s; }
+.is-spilled .pearl { opacity: 1; transform: none; transition-delay: var(--delay); }
+
+.title { margin-top: 18px; font: 400 clamp(29px, 8.5vw, 36px)/1.08 "DM Serif Display", Georgia, serif; text-wrap: balance; }
+.text { min-height: 48px; margin-top: 10px; color: rgba(255, 255, 255, .8); text-wrap: balance; }
+
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.button {
+  display: grid;
+  place-items: center;
+  min-height: 50px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 16px;
+  font-weight: 700;
+  transition: transform .2s, background .2s;
+}
+.button:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .1); }
+.button--main,
+.button--main:hover { grid-column: 1 / -1; background: #fff; color: var(--navy); }
+.more { display: flex; justify-content: center; gap: 8px 24px; margin-top: 12px; font-size: 14px; color: rgba(255, 255, 255, .72); }
+.more a { padding: 12px 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<main>
+  <a class="logo" href="/links-drinka/"><img src="/links-drinka/assets/logo-blanco.png" alt="DRINKA by Kai Bobba, ir al inicio" width="1100" height="442"></a>
+
+  <p class="code" role="img" aria-label="Error 404"><span>4</span><i></i><span>4</span></p>
+
+  <button class="spill" id="spill" type="button">
+    <svg viewBox="0 20 340 145" aria-hidden="true">
+      <defs><clipPath id="inside"><path d="M36,56 L44,150 H96 L100,56 Z"/></clipPath></defs>
+      <path d="M16,156 H324" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+      <path class="puddle" d="M188,151 C204,140 250,147 270,144 C300,140 326,147 318,154 C306,163 218,162 192,158 Z" fill="var(--taro)"/>
+      <g class="cup">
+        <path d="M36,56 L44,150 H96 L100,56 Z" fill="rgba(255,255,255,.1)"/>
+        <path d="M68,130 L90,24" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+        <g clip-path="url(#inside)">
+          <g class="liquid">
+            <rect x="30" y="72" width="76" height="80" fill="var(--taro)"/>
+            <g fill="var(--navy)">
+              <circle cx="54" cy="142" r="6"/><circle cx="69" cy="143" r="6"/><circle cx="84" cy="141" r="6"/>
+              <circle cx="61" cy="130" r="6"/><circle cx="77" cy="130" r="6"/>
+            </g>
+          </g>
+        </g>
+        <path d="M36,56 L44,150 H96 L100,56" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M30,55 H105" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+      </g>
+      <g fill="#111930" stroke="rgba(255,255,255,.35)">
+        <circle class="pearl" style="--from:-18px;--delay:.3s" cx="214" cy="149" r="6"/>
+        <circle class="pearl" style="--from:-40px;--delay:.36s" cx="236" cy="152" r="6"/>
+        <circle class="pearl" style="--from:-58px;--delay:.42s" cx="254" cy="147" r="5"/>
+        <circle class="pearl" style="--from:-82px;--delay:.48s" cx="278" cy="151" r="6"/>
+        <circle class="pearl" style="--from:-106px;--delay:.54s" cx="302" cy="148" r="5"/>
+        <circle class="pearl" style="--from:-130px;--delay:.6s" cx="326" cy="152" r="6"/>
+      </g>
+    </svg>
+    <span class="hint" id="hint">Toca el vaso para levantarlo</span>
+  </button>
+
+  <h1 class="title">¡Ups! Se nos regó esta página</h1>
+  <p class="text" id="message" aria-live="polite">El enlace no existe o cambió de lugar, pero tu bebida te sigue esperando.</p>
+
+  <nav class="actions" aria-label="Opciones para continuar">
+    <a class="button button--main" href="/links-drinka/">Volver a Drinka</a>
+    <a class="button" href="/links-drinka/#menu">Ver el menú</a>
+    <a class="button" href="https://wa.me/message/SKFIZFLHBJT5J1" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+  <div class="more">
+    <a href="https://www.instagram.com/drinka.ec/" target="_blank" rel="noopener">@drinka.ec</a>
+    <a href="https://maps.google.com/?q=-2.138061,-79.593803" target="_blank" rel="noopener">Cómo llegar</a>
+  </div>
+</main>
+
+<script>
+  const spill = document.getElementById("spill");
+  const message = document.getElementById("message");
+  const hint = document.getElementById("hint");
+  const intro = setTimeout(() => spill.classList.add("is-spilled"), 650);
+
+  spill.addEventListener("click", () => {
+    clearTimeout(intro);
+    const spilled = spill.classList.toggle("is-spilled");
+    message.textContent = spilled
+      ? "El enlace no existe o cambió de lugar, pero tu bebida te sigue esperando."
+      : "¡Lo rescataste! Ahora sí, vamos por tu bebida.";
+    hint.textContent = spilled ? "Toca el vaso para levantarlo" : "Vaso a salvo";
+  });
+</script>
+</body>
+</html>

@@ -17,11 +17,14 @@ Tarjeta interactiva (link en bio) de **DRINKA by Kai Bobba**.
 
 Todo está al inicio de `script.js`, en el bloque **EDITA AQUÍ**:
 
-- `whatsapp`: número con código de país, sin `+` ni espacios.
+- `whatsappEnlace`: enlace de WhatsApp Business de los botones generales.
+- `whatsapp`: número detrás de ese enlace, sin `+` ni espacios. Lo usan el pedido con total, delivery y guardar contacto.
 - `instagram`, `tiktok`, `delivery`, `promos`, `mapa`: enlaces. Si dejas uno vacío (`""`), su botón se oculta.
 - `direccion`: texto que aparece en "Cómo llegar".
 - `horario`: horas de apertura y cierre por día (`null` = cerrado).
 - `menu`: categorías, bebidas y precios. `favorito: true` marca la bebida destacada de cada categoría.
+
+`404.html` (página de enlace roto) tiene sus propios enlaces de WhatsApp, Instagram y mapa: si cambian, actualízalos también ahí.
 
 Después de editar, haz commit y push: la página se actualiza sola en 1 o 2 minutos.
 
@@ -29,6 +32,7 @@ Después de editar, haz commit y push: la página se actualiza sola en 1 o 2 min
 
 ```
 index.html      estructura de la tarjeta
+404.html        página para enlaces rotos
 styles.css      diseño y animaciones (paleta del manual de marca)
 script.js       datos editables e interacciones
 assets/         logos, íconos e imagen para compartir

@@ -8,28 +8,31 @@
 const DRINKA = {
   nombre: "DRINKA by Kai Bobba",
 
-  // ⚠️ Número de WhatsApp con código de país, sin "+" ni espacios (ej. Ecuador: 5939XXXXXXXX)
-  whatsapp: "593900000000",
-  mensajeWhatsapp: "¡Hola Drinka! Quiero hacer un pedido 🧋",
+  // Enlace oficial de WhatsApp Business: lo usan los botones generales
+  whatsappEnlace: "https://wa.me/message/SKFIZFLHBJT5J1",
+  // Número detrás de ese enlace, sin "+" ni espacios. Hace falta para enviar el pedido
+  // ya escrito (wa.me/message no acepta texto) y para "Guardar contacto".
+  // Si cambias uno, cambia el otro.
+  whatsapp: "593961087609",
 
   // Enlaces (si dejas uno vacío "", ese botón se oculta)
   instagram: "https://www.instagram.com/drinka.ec/",
   tiktok: "https://www.tiktok.com/@drinka.ec",
   delivery: "",                                        // vacío = pide a domicilio por WhatsApp
   promos: "https://www.instagram.com/drinka.ec/",
-  mapa: "https://maps.google.com/?q=DRINKA+by+Kai+Bobba",
-  direccion: "Escribe aquí la dirección del local",
+  mapa: "https://maps.google.com/?q=-2.138061,-79.593803",
+  direccion: "Milagro, Ecuador",
 
   // Horario (24 h). null = cerrado ese día
   zonaHoraria: "America/Guayaquil",
   horario: {
-    lunes:     ["14:00", "21:00"],
+    lunes:     null,
     martes:    ["14:00", "21:00"],
     miercoles: ["14:00", "21:00"],
     jueves:    ["14:00", "21:00"],
-    viernes:   ["14:00", "22:00"],
-    sabado:    ["12:00", "22:00"],
-    domingo:   ["12:00", "20:00"],
+    viernes:   ["14:00", "21:00"],
+    sabado:    ["14:00", "21:00"],
+    domingo:   ["14:00", "21:00"],
   },
 
   // Menú. color = color de la línea; textoBanda = color del título sobre esa franja
@@ -84,15 +87,16 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 const html = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const money = n => `$${n.toFixed(2)}`;
 
+// Sin emojis en estos textos: la redirección de wa.me los convierte en "�"
 const waLink = text =>
   `https://wa.me/${DRINKA.whatsapp}?text=${encodeURIComponent(text)}`;
 
 /* ---------- Enlaces y textos desde DRINKA ---------- */
 const LINKS = {
-  whatsapp: waLink(DRINKA.mensajeWhatsapp),
+  whatsapp: DRINKA.whatsappEnlace,
   instagram: DRINKA.instagram,
   tiktok: DRINKA.tiktok,
-  delivery: DRINKA.delivery || waLink("¡Hola Drinka! Quiero pedir a domicilio 🛵"),
+  delivery: DRINKA.delivery || waLink("¡Hola Drinka! Quiero pedir a domicilio."),
   promos: DRINKA.promos,
   mapa: DRINKA.mapa,
 };
@@ -315,7 +319,11 @@ function elegir(i, foco = false) {
     t.setAttribute("aria-selected", on);
     t.tabIndex = on ? 0 : -1;
     if (on && foco) t.focus();
-    if (on) t.scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduceMotion ? "auto" : "smooth" });
+    if (on) {
+      // Solo mueve la fila de pestañas: scrollIntoView bajaba toda la página al cargar
+      const a = t.getBoundingClientRect(), b = tabs.getBoundingClientRect();
+      tabs.scrollBy({ left: a.left + a.width / 2 - b.left - b.width / 2, behavior: reduceMotion ? "auto" : "smooth" });
+    }
   });
   pintarPanel();
 }
@@ -354,7 +362,7 @@ function pintarPedido(bump) {
   $("#cart-count").textContent = `${count} ${count === 1 ? "bebida" : "bebidas"}`;
   $("#cart-total").textContent = money(total);
   $("#cart-go").href = waLink([
-    "¡Hola Drinka! 🧋 Quiero pedir:",
+    "¡Hola Drinka! Quiero pedir:",
     ...lines,
     `Total: ${money(total)}`,
     "¿Me confirman? ¡Gracias!",
