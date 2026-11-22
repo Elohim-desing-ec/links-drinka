@@ -6,7 +6,7 @@ Tarjeta interactiva (link en bio) de **DRINKA by Kai Bobba**.
 
 ## Qué incluye
 
-- Bienvenida animada: el logo se arma solo y hay burbujas de boba que reaccionan al toque.
+- Bienvenida animada: el logo se arma solo y desfilan las bebidas recomendadas con foto y precio.
 - Redes conectadas a la perla con pulsos de luz.
 - Botón de pedido por WhatsApp, menú, delivery, ubicación y promos.
 - **Menú con precios** (Matcha, Taro, Tés, Café): tocas **+** en cada bebida, se calcula el total y el pedido se envía por WhatsApp ya escrito.
@@ -23,6 +23,8 @@ Todo está al inicio de `script.js`, en el bloque **EDITA AQUÍ**:
 - `direccion`: texto que aparece en "Cómo llegar".
 - `horario`: horas de apertura y cierre por día (`null` = cerrado).
 - `menu`: categorías, bebidas y precios. `favorito: true` marca la bebida destacada de cada categoría.
+
+Fotos: cada bebida usa `assets/vasos/<foto>.webp` (máx. 520 px de alto) y `assets/vasos/<foto>-mini.webp` (176 px). Los originales de `VASOS/` no se suben.
 
 `404.html` (página de enlace roto) tiene sus propios enlaces de WhatsApp, Instagram y mapa: si cambian, actualízalos también ahí.
 

@@ -10,7 +10,7 @@
 <meta property="og:title" content="DRINKA by Kai Bobba">
 <meta property="og:description" content="Un día tranquilo empieza con… Menú, pedidos por WhatsApp, horario y ubicación.">
 <meta property="og:url" content="https://elohim-desing-ec.github.io/links-drinka/">
-<meta property="og:image" content="https://elohim-desing-ec.github.io/links-drinka/assets/og.png">
+<meta property="og:image" content="https://elohim-desing-ec.github.io/links-drinka/assets/og.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -18,7 +18,7 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Serif+Display&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add("js")</script>
 <noscript><style>.welcome{display:none}</style></noscript>
@@ -54,6 +54,7 @@
   <div class="welcome__beam" aria-hidden="true"></div>
 
   <div class="welcome__inner">
+    <div class="welcome__logo">
     <!-- Isotipo dibujado en SVG para poder animarlo -->
     <svg class="iso" id="iso" viewBox="0 0 545 805" aria-hidden="true">
       <circle class="iso__perla" cx="391" cy="154" r="144" fill="url(#g-perla)"/>
@@ -79,9 +80,15 @@
     </svg>
 
     <img class="welcome__wordmark" src="assets/wordmark-blanco.png" alt="DRINKA by Kai Bobba" width="900" height="240">
-    <p class="welcome__eyebrow">Matcha · Taro · Tés · Café</p>
-    <h2 class="welcome__title" id="w-title">¡Hola! Qué bueno verte</h2>
-    <p class="welcome__text">Aquí encuentras el menú con precios, el horario y la forma más rápida de pedir.</p>
+    </div>
+
+    <h2 class="welcome__lead" id="w-title">Un día tranquilo empieza con…</h2>
+    <!-- Las bebidas con favorito: true se cargan aquí desde script.js -->
+    <div class="showcase" id="showcase" role="group" aria-label="Bebidas recomendadas"></div>
+    <div class="pick" id="pick">
+      <p class="pick__name" id="pick-name"></p>
+      <p class="pick__price" id="pick-price"></p>
+    </div>
     <button class="welcome__btn" id="enter" type="button">Entrar <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
   </div>
 </div>

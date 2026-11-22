@@ -36,44 +36,46 @@ const DRINKA = {
   },
 
   // Menú. color = color de la línea; textoBanda = color del título sobre esa franja
-  // capas = colores del vaso de arriba hacia abajo. favorito = la bebida destacada
+  // foto = archivo en assets/vasos (foto.webp y foto-mini.webp)
+  // favorito = la bebida destacada: sale en su pestaña y en la bienvenida
+  // colorIntro = color del nombre en la bienvenida, legible sobre azul marino
   menu: [
     {
-      id: "matcha", nombre: "Matcha", color: "#6F8A3A", textoBanda: "#FFFFFF",
+      id: "matcha", nombre: "Matcha", color: "#6F8A3A", textoBanda: "#FFFFFF", colorIntro: "#A9C874",
       bebidas: [
-        { nombre: "Matcha Latte",      precio: 3.00, favorito: true, capas: ["#7FA650", "#EEE5D0"] },
-        { nombre: "Matcha Strawberry", precio: 3.50, capas: ["#7FA650", "#EEE5D0", "#D93A4A"] },
-        { nombre: "Matcha & Café",     precio: 3.50, capas: ["#7FA650", "#EEE5D0", "#4A2A1C"] },
-        { nombre: "Matcha Oreo",       precio: 3.50, capas: ["#7FA650", "#EEE5D0", "#2B2422"] },
-        { nombre: "Matcha & Taro",     precio: 4.50, capas: ["#7FA650", "#EEE5D0", "#9E86D6"] },
+        { nombre: "Matcha Latte",      precio: 3.00, favorito: true, foto: "matcha-latte" },
+        { nombre: "Matcha Strawberry", precio: 3.50, foto: "matcha-strawberry" },
+        { nombre: "Matcha & Café",     precio: 3.50, foto: "matcha-cafe" },
+        { nombre: "Matcha Oreo",       precio: 3.50, foto: "matcha-oreo" },
+        { nombre: "Matcha & Taro",     precio: 4.50, foto: "matcha-taro" },
       ],
     },
     {
-      id: "taro", nombre: "Taro", color: "#9E86D6", textoBanda: "#2B1D4D",
+      id: "taro", nombre: "Taro", color: "#9E86D6", textoBanda: "#2B1D4D", colorIntro: "#A88FE0",
       bebidas: [
-        { nombre: "Taro Latte",       precio: 3.00, favorito: true, capas: ["#9E86D6", "#DCD3F2"] },
-        { nombre: "Taro & Matcha",    precio: 4.50, capas: ["#7FA650", "#DCD3F2", "#9E86D6"] },
-        { nombre: "Taro & Café",      precio: 3.50, capas: ["#4A2A1C", "#DCD3F2", "#9E86D6"] },
-        { nombre: "Taro & Chocolate", precio: 3.50, capas: ["#9E86D6", "#DCD3F2", "#5B3A2B"] },
+        { nombre: "Taro Latte",       precio: 3.00, favorito: true, foto: "taro-latte" },
+        { nombre: "Taro & Matcha",    precio: 4.50, foto: "taro-matcha" },
+        { nombre: "Taro & Café",      precio: 3.50, foto: "taro-cafe" },
+        { nombre: "Taro & Chocolate", precio: 3.50, foto: "taro-chocolate" },
       ],
     },
     {
-      id: "tes", nombre: "Tés", color: "#EE8A34", textoBanda: "#1F2A4D",
+      id: "tes", nombre: "Tés", color: "#EE8A34", textoBanda: "#1F2A4D", colorIntro: "#EE8A34",
       bebidas: [
-        { nombre: "Drinka Tea",      precio: 2.00, favorito: true, limon: true, capas: ["#E7A04B", "#D2692A"] },
-        { nombre: "Té Negro",        precio: 2.00, capas: ["#3B2417"] },
-        { nombre: "Té de Jengibre",  precio: 2.00, capas: ["#C47A2C"] },
-        { nombre: "Flor de Jamaica", precio: 2.00, capas: ["#B21F37"] },
+        { nombre: "Drinka Tea",      precio: 2.00, favorito: true, foto: "drinka-tea" },
+        { nombre: "Té Negro",        precio: 2.00, foto: "te-negro" },
+        { nombre: "Té de Jengibre",  precio: 2.00, foto: "te-jengibre" },
+        { nombre: "Flor de Jamaica", precio: 2.00, foto: "flor-jamaica" },
       ],
     },
     {
-      id: "cafe", nombre: "Café", color: "#1F2A4D", textoBanda: "#FBEBDD",
+      id: "cafe", nombre: "Café", color: "#1F2A4D", textoBanda: "#FBEBDD", colorIntro: "#FBEBDD",
       bebidas: [
-        { nombre: "Ice Latte",      precio: 2.50, favorito: true, capas: ["#3B2417", "#EEE5D0"] },
-        { nombre: "Caramel Latte",  precio: 3.50, capas: ["#C98A4B", "#EEE5D0"] },
-        { nombre: "Mocca",          precio: 3.50, capas: ["#5A3424", "#A26B4B"] },
-        { nombre: "Capuchino",      precio: 3.50, capas: ["#EEE5D0", "#4A2A1C"] },
-        { nombre: "Café Americano", precio: 2.00, capas: ["#2A1912"] },
+        { nombre: "Ice Latte",      precio: 2.50, favorito: true, foto: "ice-latte" },
+        { nombre: "Caramel Latte",  precio: 3.50, foto: "caramel-latte" },
+        { nombre: "Mocca",          precio: 3.50, foto: "mocca" },
+        { nombre: "Capuchino",      precio: 3.50, foto: "capuchino" },
+        { nombre: "Café Americano", precio: 2.00, foto: "cafe-americano" },
       ],
     },
   ],
@@ -219,43 +221,7 @@ DRINKA.menu.forEach(cat => cat.bebidas.forEach(b => {
   catalog.set(b.id, b);
 }));
 
-// Vaso ilustrado como en el menú impreso
-let cupCount = 0;
-function cupSVG(bebida, grande = false) {
-  const id = `cup${++cupCount}`;
-  const body = "M16,28 L23,122 Q23.4,126 27,126 H73 Q76.6,126 77,122 L84,28 Z";
-  const top = 33, bottom = 126;
-  const h = (bottom - top) / bebida.capas.length;
-  const stroke = grande ? 2.6 : 6;
-  const layers = bebida.capas
-    .map((c, i) => `<rect x="0" y="${(top + i * h).toFixed(1)}" width="100" height="${(h + .8).toFixed(1)}" fill="${c}"/>`)
-    .join("");
-  const ice = grande
-    ? `<g class="ice" fill="rgba(200,229,245,.85)" stroke="rgba(255,255,255,.95)" stroke-width="1.6">
-         <rect x="46" y="36" width="19" height="19" rx="5"/>
-         <rect x="59" y="45" width="17" height="17" rx="5"/>
-         <rect x="41" y="52" width="16" height="16" rx="5"/>
-       </g>`
-    : "";
-  const lemon = grande && bebida.limon
-    ? `<g><circle cx="36" cy="48" r="13" fill="#F6D24A" stroke="#F2B937" stroke-width="2.5"/>
-         <path d="M36,37 V59 M25,48 H47 M28.2,40.2 L43.8,55.8 M43.8,40.2 L28.2,55.8" stroke="#fff" stroke-width="1.6"/></g>`
-    : "";
-  const perla = grande ? `<circle cx="58" cy="76" r="45" fill="url(#g-perla)"/>` : "";
-  const straw = grande
-    ? `<line x1="32" y1="6" x2="35" y2="118" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>`
-    : `<line x1="33" y1="36" x2="35" y2="116" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/>`;
-  return `<svg viewBox="0 0 100 132" aria-hidden="true">
-    <defs><clipPath id="${id}"><path d="${body}"/></clipPath></defs>
-    ${perla}
-    <path d="${body}" fill="rgba(255,255,255,.75)"/>
-    <g clip-path="url(#${id})">${layers}${ice}${lemon}</g>
-    ${straw}
-    <path d="${body}" fill="none" stroke="#CFCBE0" stroke-width="${stroke}" stroke-linejoin="round"/>
-    <path d="M13,25 Q50,4 87,25" fill="none" stroke="#CFCBE0" stroke-width="${stroke}" stroke-linecap="round"/>
-    <line x1="10" y1="27" x2="90" y2="27" stroke="#CFCBE0" stroke-width="${stroke}" stroke-linecap="round"/>
-  </svg>`;
-}
+const fotoURL = (b, mini = false) => `assets/vasos/${b.foto}${mini ? "-mini" : ""}.webp`;
 
 const qtyHTML = b => {
   const n = cart.get(b.id) || 0;
@@ -287,11 +253,11 @@ function pintarPanel() {
         <p class="feat__fav">El favorito de la casa</p>
         ${qtyHTML(fav)}
       </div>
-      <div class="feat__cup">${cupSVG(fav, true)}</div>
+      <div class="feat__cup"><img src="${fotoURL(fav)}" alt=""></div>
     </div>
     <ul class="items">
       ${resto.map(b => `<li class="item">
-        <span class="item__cup">${cupSVG(b)}</span>
+        <img class="item__cup" src="${fotoURL(b, true)}" alt="">
         <span class="item__name">${html(b.nombre)}</span>
         <span class="item__price">${money(b.precio)}</span>
         ${qtyHTML(b)}
@@ -611,6 +577,74 @@ function bubbles(canvas) {
 }
 
 /* =========================================================
+   BIENVENIDA: bebidas recomendadas
+   ========================================================= */
+function vitrina() {
+  const stage = $("#showcase");
+  const pick = $("#pick");
+  const favs = DRINKA.menu.flatMap(cat =>
+    cat.bebidas.filter(b => b.favorito).map(b => ({ ...b, color: cat.colorIntro })));
+  if (!favs.length) return { stop() {} };
+  let actual = 0, timer, inicioX = null, deslizo = false;
+
+  const cups = favs.map((b, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "show";
+    btn.setAttribute("aria-label", `${b.nombre}, ${money(b.precio)}`);
+    const img = document.createElement("img");
+    img.src = fotoURL(b);
+    img.alt = "";
+    btn.append(img);
+    btn.addEventListener("click", () => {
+      if (deslizo) { deslizo = false; return; }
+      manual();
+      mostrar(i);
+    });
+    stage.append(btn);
+    return btn;
+  });
+
+  function mostrar(i) {
+    const n = favs.length;
+    actual = (i + n) % n;
+    cups.forEach((cup, k) => {
+      const d = (k - actual + n) % n;
+      cup.dataset.pos = d === 0 ? "centro" : d === 1 ? "der" : d === n - 1 ? "izq" : "atras";
+    });
+    $("#pick-name").textContent = favs[actual].nombre;
+    $("#pick-price").textContent = money(favs[actual].precio);
+    pick.style.setProperty("--c", favs[actual].color);
+    pick.classList.remove("is-swap");
+    void pick.offsetWidth;
+    pick.classList.add("is-swap");
+  }
+
+  const stop = () => clearInterval(timer);
+  // Si la persona toca, deja de girar solo y se anuncia lo que elige
+  function manual() {
+    stop();
+    pick.setAttribute("aria-live", "polite");
+  }
+
+  stage.addEventListener("pointerdown", e => { inicioX = e.clientX; deslizo = false; });
+  stage.addEventListener("pointercancel", () => { inicioX = null; });
+  stage.addEventListener("pointerup", e => {
+    if (inicioX === null) return;
+    const dx = e.clientX - inicioX;
+    inicioX = null;
+    if (Math.abs(dx) < 35) return;
+    deslizo = true;
+    manual();
+    mostrar(actual + (dx < 0 ? 1 : -1));
+  });
+
+  mostrar(0);
+  if (!reduceMotion) timer = setInterval(() => mostrar(actual + 1), 2800);
+  return { stop };
+}
+
+/* =========================================================
    BIENVENIDA: entrar
    ========================================================= */
 const welcome = $("#welcome");
@@ -622,6 +656,7 @@ let entered = false;
 document.body.classList.add("is-welcome");
 page.inert = true;
 const bubbleFx = bubbles($("#bubbles"));
+const vitrinaFx = vitrina();
 
 // El círculo de salida se cierra sobre la perla del logo
 function centrarEnPerla() {
@@ -635,6 +670,7 @@ window.addEventListener("resize", centrarEnPerla);
 function enter() {
   if (entered) return;
   entered = true;
+  vitrinaFx.stop();
   centrarEnPerla();
   iso.classList.add("is-pop");
   page.inert = false;
